@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Form } from './form/Form';
+import { Field, FieldPassword, Submit } from './form/FormType';
+import * as fv from './form/validators/FormValidator';
 
 function App() {
+  let validator = {
+    name: fv.validate().required(true, "Campo Obrigatório!").email('Email not valid'),
+    pass: fv.validate().required(true, "Campo ob")
+  }
+
+  let handleSubmit = (values) => {
+    console.log("Success", values);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Form onSubmit={handleSubmit} validator={validator}>
+        <Field name="name" id={"meuId"} labelText={"Nosso Nome:"} />
+        <FieldPassword name="pass" id={"meu"} labelText={"Sua Senha:"} />
+        <Submit text={"Enviar"} />
+      </Form>
     </div>
   );
 }
