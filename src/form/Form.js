@@ -11,7 +11,7 @@ let Form = (props) => {
 
     useEffect(() => {
         if (!warning) return;
-        if (JSON.stringify(warning) != JSON.stringify({}) || Object.keys(warning).length > 0) {
+        if (JSON.stringify(warning) !== JSON.stringify({}) || Object.keys(warning).length > 0) {
             setTimeout(() => {
                 setWarning(null);
             }, 3000);
@@ -20,7 +20,7 @@ let Form = (props) => {
 
         // Send the ret value to submit.
         onSubmit(values);
-    }, [warning]);
+    }, [warning, values, onSubmit]);
 
     /**
      * This function simples validate the form elements

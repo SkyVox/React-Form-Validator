@@ -14,8 +14,7 @@ class Validator {
 
     required(required, text) {
         this.validators['required'] = this.buildValidator(required, text, (input) => {
-            if (required) return (input.value != '');
-            return true;
+            return required ? input.value !== '' : true;
         });
         return this;
     }
