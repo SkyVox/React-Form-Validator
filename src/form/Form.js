@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './form-default-style.css';
 
 let Form = (props) => {
     let { onSubmit, validator } = props;
