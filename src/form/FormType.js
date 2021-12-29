@@ -13,7 +13,7 @@ const FieldPassword = (props) => {
 }
 
 const Submit = (props) => {
-    let { id, text, name } = props;
+    const { id, text, name } = props;
 
     return (
         <>

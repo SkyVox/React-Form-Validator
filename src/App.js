@@ -8,7 +8,7 @@ function App() {
     pass: fv.validate().required(true, "Campo Obrigatório!").password('Senha muito fraca!')
   }
 
-  let handleSubmit = (values) => {
+  const handleSubmit = (values) => {
     console.log("Success", values);
   }
 

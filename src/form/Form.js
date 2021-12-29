@@ -1,27 +1,14 @@
 import React, { useState, useEffect } from "react";
 import './form-default-style.css';
 
-let Form = (props) => {
-    let { onSubmit, validator } = props;
+const Form = (props) => {
+    const { onSubmit, validator } = props;
     const [ warning, setWarning ] = useState(null);
     const [ values, setValues ] = useState({});
 
-    let reset = () => {
+    const reset = () => {
         setWarning({});
     }
-
-    useEffect(() => {
-        if (!warning) return;
-        if (JSON.stringify(warning) !== JSON.stringify({}) || Object.keys(warning).length > 0) {
-            setTimeout(() => {
-                setWarning(null);
-            }, 3000);
-            return;
-        }
-
-        // Send the ret value to submit.
-        onSubmit(values);
-    }, [warning, values, onSubmit]);
 
     /**
      * This function simples validate the form elements
@@ -29,7 +16,7 @@ let Form = (props) => {
      * 
      * @param {*} event - HTML submit form event.
      */
-    let handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         // Reset our informations.
         reset();
@@ -57,6 +44,19 @@ let Form = (props) => {
 
         setValues(ret);
     }
+
+    useEffect(() => {
+        if (!warning) return;
+        if (JSON.stringify(warning) !== JSON.stringify({}) || Object.keys(warning).length > 0) {
+            setTimeout(() => {
+                setWarning(null);
+            }, 3000);
+            return;
+        }
+
+        // Send the ret value to submit.
+        onSubmit(values);
+    }, [warning, values, onSubmit]);
 
     /**
      * Render all form childrens and accept the @warning props inside

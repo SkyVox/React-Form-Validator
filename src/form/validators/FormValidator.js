@@ -60,7 +60,7 @@ class Validator {
 
         if (JSON.stringify(this.validators) === JSON.stringify({})) return this.testResponse(true, "No validators found.");
 
-        for (let key in this.validators) {
+        for (const key in this.validators) {
             const validator = this.validators[key];
             if (!validator) return;
             if (!validator.test(input)) return this.testResponse(false, validator.text);
